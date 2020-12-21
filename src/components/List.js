@@ -19,14 +19,23 @@ export const List = () => {
   }, []);
 
   return (
-    <div>
-      {listData.map((lst) => (
-        <div key={lst.id}>
-          <p>
-            {lst.id},{lst.listId}, {lst.name}{" "}
-          </p>
-        </div>
-      ))}
-    </div>
+    <table className="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">ListID</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {listData.map((lst) => (
+          <tr key={lst.id}>
+            <th scope="row">{lst.id}</th>
+            <td>{lst.listId}</td>
+            <td>{lst.name}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
