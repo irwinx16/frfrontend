@@ -9,7 +9,7 @@ export const List = () => {
 
       //Setting state
       setListData(ogList.data);
-      console.log(ogList.data);
+      // console.log(ogList.data);
     } catch (error) {
       console.error(error.message);
     }
