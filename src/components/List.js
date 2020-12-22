@@ -7,9 +7,10 @@ export const List = () => {
     try {
       const ogListCall = await axios.get("https://cors-anywhere.herokuapp.com/https://fetch-hiring.s3.amazonaws.com/hiring.json");
       const ogList = ogListCall.data;
+      const groupedList = ogList.sort((a, b) => a.listId - b.listId);
 
       //Setting state
-      setListData(ogList);
+      setListData(groupedList);
       console.log(typeof ogList);
     } catch (error) {
       console.error(error.message);
