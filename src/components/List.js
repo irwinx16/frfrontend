@@ -14,7 +14,17 @@ export const List = () => {
         }
       });
 
-      console.log(filteredList);
+      const sortedList = filteredList.sort((a, b) => {
+        if (a.listId === b.listId) {
+          if (a.name < b.name) {
+            return -1;
+          } else if (a.name > b.name) {
+            return 1;
+          }
+        }
+      });
+
+      // console.log(filteredList);
 
       //Setting state
       setListData(filteredList);
