@@ -12,13 +12,12 @@ export const List = () => {
           return el.name;
         }
       });
-
       let collator = new Intl.Collator([], { numeric: true });
-      const newObj = filteredList.sort((a, b) => collator.compare(a.name, b.name));
-      newObj.sort((a, b) => a.listId - b.listId);
+      const sortedList = filteredList.sort((a, b) => collator.compare(a.name, b.name));
+      sortedList.sort((a, b) => a.listId - b.listId);
 
       //Setting state
-      setListData(newObj);
+      setListData(sortedList);
     } catch (error) {
       console.error(error.message);
     }
