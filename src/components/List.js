@@ -7,27 +7,18 @@ export const List = () => {
     try {
       const ogListCall = await axios.get("https://cors-anywhere.herokuapp.com/https://fetch-hiring.s3.amazonaws.com/hiring.json");
       const ogList = ogListCall.data;
-      const groupedList = ogList.sort((a, b) => a.listId - b.listId);
-      const filteredList = groupedList.filter((el) => {
+      const filteredList = ogList.filter((el) => {
         if (el.name != null || el.name != "") {
           return el.name;
         }
       });
 
-      const sortedList = filteredList.sort((a, b) => {
-        if (a.listId === b.listId) {
-          if (a.name < b.name) {
-            return -1;
-          } else if (a.name > b.name) {
-            return 1;
-          }
-        }
-      });
-
-      // console.log(filteredList);
+      let collator = new Intl.Collator([], { numeric: true });
+      const newObj = filteredList.sort((a, b) => collator.compare(a.name, b.name));
+      newObj.sort((a, b) => a.listId - b.listId);
 
       //Setting state
-      setListData(filteredList);
+      setListData(newObj);
     } catch (error) {
       console.error(error.message);
     }
