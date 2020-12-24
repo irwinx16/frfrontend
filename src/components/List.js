@@ -27,7 +27,7 @@ export const List = () => {
   }, []);
 
   return (
-    <table className="table">
+    <table className="table table-striped">
       <thead>
         <tr>
           <th scope="col">ID</th>
