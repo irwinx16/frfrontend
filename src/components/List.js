@@ -19,8 +19,8 @@ export const List = () => {
 
       //Setting state
       setListData(sortedList);
-    } catch (error) {
-      console.error(error.message);
+    } catch (err) {
+      console.error(err.message);
     }
   };
   useEffect(() => {
@@ -31,7 +31,6 @@ export const List = () => {
     <table className="table table-striped">
       <thead>
         <tr>
-          <th scope="col">ID</th>
           <th scope="col">ListID</th>
           <th scope="col">Name</th>
         </tr>
@@ -39,8 +38,7 @@ export const List = () => {
       <tbody>
         {listData.map((lst) => (
           <tr key={lst.id}>
-            <th scope="row">{lst.id}</th>
-            <td>{lst.listId}</td>
+            <th scope="row">{lst.listId}</th>
             <td>{lst.name}</td>
           </tr>
         ))}
